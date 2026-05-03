@@ -8,5 +8,12 @@ terraform {
 }
 
 provider "aws" {
-  # Configuration options
+  region = var.aws_region
+
+  default_tags {
+    tags = {
+      Project     = "resize-image"
+      Environment = terraform.workspace
+    }
+  }
 }
