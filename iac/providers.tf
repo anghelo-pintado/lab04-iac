@@ -17,3 +17,8 @@ provider "aws" {
     }
   }
 }
+
+# Para obtener las AZs disponibles en la region actual
+data "aws_availability_zones" "available" {
+  state = "available"
+}
