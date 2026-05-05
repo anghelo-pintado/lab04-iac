@@ -5,7 +5,7 @@ resource "random_id" "bucket_suffix" {
 
 # s3
 resource "aws_s3_bucket" "images" {
-  bucket        = "${local.prefix}-image-processor-${terraform.workspace}-images-${random_id.bucket_suffix.hex}"
+  bucket        = "${local.prefix}-image-processor-${random_id.bucket_suffix.hex}"
   force_destroy = terraform.workspace != "prod"
 
   tags = {
