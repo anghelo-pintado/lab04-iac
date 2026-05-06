@@ -44,4 +44,4 @@ iac/terraform.rc
 # planout
 
 **/node_modules/
-lambdas/**/*.zip
+iac/artifacts/*.zip
