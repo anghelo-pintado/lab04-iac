@@ -1,7 +1,7 @@
 const allow_types = new Set(["jpg", "jpeg", "png", "webp", "gif"]);
 const max_file_size = 10 * 1024 * 1024;
 
-export const validate = (buffer, filename) => {
+export const validateFile = (buffer, filename) => {
   const ext = filename.split(".").pop().toLowerCase();
 
   if (!allow_types.has(ext)) {

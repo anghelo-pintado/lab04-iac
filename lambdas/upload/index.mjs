@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import { parseBody } from "../utils/parser.mjs";
-import { uploadToS3 } from "../services/s3Service.mjs";
+import { parseBody } from "./parse.mjs";
+import { uploadToS3 } from "./s3Service.mjs";
 
 export const handler = async (event) => {
   try {

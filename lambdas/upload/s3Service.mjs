@@ -4,7 +4,7 @@ const s3 = new S3Client({});
 const bucket = process.env.S3_BUCKET;
 const prefix = process.env.UPLOAD_PREFIX || "uploads/";
 
-export const uploadFile = async (buffer, filename, mimetype, uniqueId) => {
+export const uploadToS3 = async (buffer, filename, mimetype, uniqueId) => {
   const ext = filename.split(".").pop().toLowerCase();
 
   const key = `${prefix}${uniqueId}.${ext}`;

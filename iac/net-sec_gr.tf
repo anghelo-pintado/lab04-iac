@@ -55,38 +55,38 @@ resource "aws_vpc_security_group_egress_rule" "crop_lambda_to_s3" {
 
 # Egress sqs interface endpoint
 resource "aws_vpc_security_group_egress_rule" "upload_lambda_to_sqs" {
-  security_group_id = aws_security_group.upload_lambda.id
-  description       = "Permite upload_lambda a SQS via Interface Endpoint"
-  from_port         = 443
-  to_port           = 443
-  ip_protocol       = "tcp"
-  prefix_list_id    = aws_security_group.vpc_endpoint_sqs.id
+  security_group_id            = aws_security_group.upload_lambda.id
+  description                  = "Permite upload_lambda a SQS via Interface Endpoint"
+  from_port                    = 443
+  to_port                      = 443
+  ip_protocol                  = "tcp"
+  referenced_security_group_id = aws_security_group.vpc_endpoint_sqs.id
 }
 
 resource "aws_vpc_security_group_egress_rule" "crop_lambda_to_sqs" {
-  security_group_id = aws_security_group.crop_lambda.id
-  description       = "Permite crop_lambda a SQS via Interface Endpoint"
-  from_port         = 443
-  to_port           = 443
-  ip_protocol       = "tcp"
-  prefix_list_id    = aws_security_group.vpc_endpoint_sqs.id
+  security_group_id            = aws_security_group.crop_lambda.id
+  description                  = "Permite crop_lambda a SQS via Interface Endpoint"
+  from_port                    = 443
+  to_port                      = 443
+  ip_protocol                  = "tcp"
+  referenced_security_group_id = aws_security_group.vpc_endpoint_sqs.id
 }
 
 # Ingress al VPC Endpoint de SQS desde Lambda
 resource "aws_vpc_security_group_ingress_rule" "sqs_from_upload_lambda" {
-  security_group_id = aws_security_group.vpc_endpoint_sqs.id
-  description       = "Permite SQS de upload_lambda via Interface Endpoint"
-  from_port         = 443
-  to_port           = 443
-  ip_protocol       = "tcp"
-  prefix_list_id    = aws_security_group.upload_lambda.id
+  security_group_id            = aws_security_group.vpc_endpoint_sqs.id
+  description                  = "Permite SQS de upload_lambda via Interface Endpoint"
+  from_port                    = 443
+  to_port                      = 443
+  ip_protocol                  = "tcp"
+  referenced_security_group_id = aws_security_group.upload_lambda.id
 }
 
 resource "aws_vpc_security_group_ingress_rule" "sqs_from_crop_lambda" {
-  security_group_id = aws_security_group.vpc_endpoint_sqs.id
-  description       = "Permite SQS de crop_lambda via Interface Endpoint"
-  from_port         = 443
-  to_port           = 443
-  ip_protocol       = "tcp"
-  prefix_list_id    = aws_security_group.crop_lambda.id
+  security_group_id            = aws_security_group.vpc_endpoint_sqs.id
+  description                  = "Permite SQS de crop_lambda via Interface Endpoint"
+  from_port                    = 443
+  to_port                      = 443
+  ip_protocol                  = "tcp"
+  referenced_security_group_id = aws_security_group.crop_lambda.id
 }
