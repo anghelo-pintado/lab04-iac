@@ -1,0 +1,10 @@
+aws_region                   = "us-east-1"
+vpc_cidr                     = "10.0.0.0/16"
+private_subnet_cidrs         = ["10.0.11.0/24", "10.0.12.0/24"]
+lambda_memory_upload         = 256
+lambda_memory_crop           = 512
+lambda_timeout_upload        = 30
+lambda_timeout_crop          = 60
+s3_uploads_expiration_days   = 30
+s3_processed_expiration_days = 90
+log_retention_days           = 14
